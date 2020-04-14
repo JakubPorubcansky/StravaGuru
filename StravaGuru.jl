@@ -11,14 +11,10 @@
 
 using HTTP, JSON, Plots, Dates, TimeZones
 
+include("config.jl")
 include("requests.jl")
 include("plotting.jl")
 include("utils.jl")
-
-code = "95ecee7dae119ec9f56ad97c26214bf0305dfb6e"
-
-cliendId = 0
-clientSecret = ""
 
 access = getAccessUsingCode(cliendId, clientSecret, code)
 access = getAccessUsingToken(cliendId, clientSecret, access["refresh_token"])
