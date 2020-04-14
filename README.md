@@ -1,2 +1,2 @@
 # StravaGuru
-Strava app insights through Strava API
+Strava app usage/metrics insights through Strava API
