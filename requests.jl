@@ -22,12 +22,24 @@ end
 
 function getAthleteInfo(accessToken::String)
     r = HTTP.request("GET", "https://www.strava.com/api/v3/athlete"; query = Dict(:access_token => accessToken))
-    JSON.parse(String(r.body))
+    rbody = JSON.parse(String(r.body))
+
+    Athlete(rbody["id"], rbody["firstname"], rbody["lastname"], rbody["username"], rbody["sex"])
 end
 
 function getAllStarredSegments(accessToken::String)
     r = HTTP.request("GET", "https://www.strava.com/api/v3/segments/starred"; query = Dict(:access_token => accessToken))
-    JSON.parse(String(r.body))
+    starredSegments = Vector{Segment}
+    for seg in JSON.parse(String(r.body))
+        push!(starredSegments,
+            Segment(
+            seg["id"],
+            seg["starred"],
+            seg["name"]
+            )
+        )
+    end
+    starredSegments
 end
 
 function getSegmentEfforts(segments::Vector{Any}, accessToken::String)
