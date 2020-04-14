@@ -1,0 +1,2 @@
+# ignore config.jl with stored credentials
+config.jl
