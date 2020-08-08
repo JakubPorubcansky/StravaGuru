@@ -1,2 +1,3 @@
 # StravaGuru
-Strava app usage/metrics insights through Strava API
+
+A set of functions and visualizations interacting with the Strava API to get performance insights from the Strava application.
